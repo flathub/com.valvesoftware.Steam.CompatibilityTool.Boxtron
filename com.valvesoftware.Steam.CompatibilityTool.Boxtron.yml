@@ -25,8 +25,8 @@ modules:
   - name: dosbox
     sources:
       - type: archive
-        url: "https://github.com/dreamer/dosbox-staging/releases/download/v0.75.0-pre/dosbox-staging-linux-v0.75.0-pre-392-gf1f78.tar.xz"
-        sha256: f7972c5ac35fb0205d11f16f99a978c49b125f77b811a88f35d3a0e72f95ee49
+        url: "https://downloads.sourceforge.net/project/dosbox/dosbox/0.74-3/dosbox-0.74-3.tar.gz"
+        sha256: c0d13dd7ed2ed363b68de615475781e891cd582e8162b5c3669137502222260a
     modules:
 
       - shared-modules/SDL/SDL-1.2.15.json
