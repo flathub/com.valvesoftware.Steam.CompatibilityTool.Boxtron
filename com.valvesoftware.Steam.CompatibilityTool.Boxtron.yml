@@ -14,8 +14,8 @@ build-options:
     CPATH: :/app/share/steam/compatibilitytools.d/Boxtron/include
   strip: true
 cleanup:
-  - "*.a"
-  - "*.la"
+  - '*.a'
+  - '*.la'
   - /include
   - /lib/pkgconfig
   - /share/aclocal
@@ -26,8 +26,8 @@ modules:
     sources:
       - type: archive
         archive-type: tar-gzip
-        url: "https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.2.tar.gz"
-        sha256: 6546427cb3218224a5e3f97c5a4a30960aca5eced3e44ab94810357f36fcfafb
+        url: https://api.github.com/repos/dosbox-staging/dosbox-staging/tarball/v0.76.0
+        sha256: be264c84909a001f4c4ac926a33d654ec8956154c442aa8e707b8ccf087a8ec1
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dosbox-staging/dosbox-staging/releases/latest
@@ -42,7 +42,7 @@ modules:
       - name: SDL_sound
         sources:
           - type: archive
-            url: "https://icculus.org/SDL_sound/downloads/SDL_sound-1.0.3.tar.gz"
+            url: https://icculus.org/SDL_sound/downloads/SDL_sound-1.0.3.tar.gz
             sha256: 3999fd0bbb485289a52be14b2f68b571cb84e380cc43387eadf778f64c79e6df
 
       - shared-modules/glu/glu-9.json
@@ -50,7 +50,7 @@ modules:
   - name: libXinerama
     sources:
       - type: archive
-        url: "https://www.x.org/releases/individual/lib/libXinerama-1.1.4.tar.gz"
+        url: https://www.x.org/releases/individual/lib/libXinerama-1.1.4.tar.gz
         sha256: 64de45e18cc76b8e703cb09b3c9d28bd16e3d05d5cd99f2d630de2d62c3acc18
 
   - name: fluidsynth
@@ -59,7 +59,7 @@ modules:
       - -DLIB_SUFFIX=
     sources:
       - type: archive
-        url: "https://github.com/FluidSynth/fluidsynth/archive/v2.1.0.tar.gz"
+        url: https://github.com/FluidSynth/fluidsynth/archive/v2.1.0.tar.gz
         sha256: 526addc6d8445035840d3af7282d3ba89567df209d28e183da04a1a877da2da3
 
   - name: fluid-soundfont
@@ -69,13 +69,14 @@ modules:
       - ln -s FluidR3_GM.sf2 ${FLATPAK_DEST}/share/sounds/sf2/default.sf2
     sources:
       - type: archive
-        url: "http://deb.debian.org/debian/pool/main/f/fluid-soundfont/fluid-soundfont_3.1.orig.tar.gz"
+        url: http://deb.debian.org/debian/pool/main/f/fluid-soundfont/fluid-soundfont_3.1.orig.tar.gz
         md5: 189bbdf70221018cbda536984b105dfa
 
+        sha256: 2621acaa1c78e4abdb24bdd163230cc577e61276936d6aa6e3180582142f0343
   - name: inotify-tools
     sources:
       - type: archive
-        url: "https://downloads.sourceforge.net/inotify-tools/inotify-tools-3.13.tar.gz"
+        url: https://downloads.sourceforge.net/inotify-tools/inotify-tools-3.13.tar.gz
         sha256: 464146acec2c118be63a6c2a090d9252fbe9689c093db85b695d0502fa229445
 
   - name: Boxtron
@@ -91,10 +92,11 @@ modules:
           ln -sr ${FLATPAK_DEST}{,/share/boxtron}/$d
         done
       - install -Dm644 -t ${FLATPAK_DEST}/share/metainfo ${FLATPAK_ID}.metainfo.xml
-      - appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}
+      - appstream-compose --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak
+        ${FLATPAK_ID}
     sources:
       - type: git
-        url: "https://github.com/dreamer/boxtron.git"
+        url: https://github.com/dreamer/boxtron.git
         commit: 8ce47bf400e979fe7d38fa086b865439f91bd857
         tag: v0.5.4
       - type: file
