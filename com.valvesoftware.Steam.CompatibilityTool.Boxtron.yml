@@ -27,6 +27,11 @@ modules:
       - type: archive
         url: "https://github.com/dosbox-staging/dosbox-staging/archive/v0.75.2.tar.gz"
         sha256: 6546427cb3218224a5e3f97c5a4a30960aca5eced3e44ab94810357f36fcfafb
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/dosbox-staging/dosbox-staging/releases/latest
+          version-query: .tag_name | sub("^[vV]"; "")
+          url-query: .tarball_url
     modules:
 
       - shared-modules/SDL/SDL-1.2.15.json
