@@ -23,6 +23,7 @@ cleanup:
 modules:
 
   - name: dosbox-staging
+    buildsystem: meson
     sources:
       - type: archive
         archive-type: tar-gzip
