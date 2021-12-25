@@ -27,13 +27,15 @@ modules:
     sources:
       - type: archive
         archive-type: tar-gzip
-        url: https://api.github.com/repos/dosbox-staging/dosbox-staging/tarball/v0.78.0
-        sha256: 3948a45fc8146265a50f2724d2db01c4ffe023121bdb9abd7bd800089aeca437
+        url: https://github.com/dosbox-staging/dosbox-staging/archive/v0.78.0/dosbox-staging-v0.78.0.tar.gz
+        sha256: 2e6dcfc45d7345b2d89287911718c93f30463f1d58a9bfdc3a353000520cbbf8
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dosbox-staging/dosbox-staging/releases/latest
-          version-query: .tag_name | sub("^[vV]"; "")
-          url-query: .tarball_url
+          tag-query: .tag_name
+          version-query: $tag | sub("^[vV]"; "")
+          url-query: >-
+            "https://github.com/dosbox-staging/dosbox-staging/archive/\($tag)/dosbox-staging-\($tag).tar.gz"
     modules:
 
       - shared-modules/SDL/SDL-1.2.15.json
