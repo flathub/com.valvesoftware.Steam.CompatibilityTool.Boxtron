@@ -64,6 +64,13 @@ modules:
             url: https://github.com/munt/munt/archive/refs/tags/munt_2_5_0.tar.gz
             sha256: 3f582ed85a70085c789f42c0ca44d93151b5e6dc4c79bae3c29b788024d3fa54
 
+      - name: libslirp
+        buildsystem: meson
+        sources:
+          - type: archive
+            url: https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.6.1/libslirp-4.6.1.tar.gz
+            sha256: f653157e85922cbdd987dbab20f3141d182a85b654c0f3980e10bbbf01741977
+
   - name: libXinerama
     sources:
       - type: archive
