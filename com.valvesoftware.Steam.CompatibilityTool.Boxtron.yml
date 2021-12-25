@@ -36,6 +36,9 @@ modules:
           version-query: $tag | sub("^[vV]"; "")
           url-query: >-
             "https://github.com/dosbox-staging/dosbox-staging/archive/\($tag)/dosbox-staging-\($tag).tar.gz"
+      - type: patch
+        paths:
+          - patches/dosbox-staging/fix-gcc-version-detection.patch
     modules:
 
       - shared-modules/SDL/SDL-1.2.15.json
