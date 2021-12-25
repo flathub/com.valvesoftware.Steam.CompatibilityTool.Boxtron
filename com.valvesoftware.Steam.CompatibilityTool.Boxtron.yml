@@ -2,7 +2,7 @@ id: com.valvesoftware.Steam.CompatibilityTool.Boxtron
 default-branch: stable
 runtime: com.valvesoftware.Steam
 runtime-version: stable
-sdk: org.freedesktop.Sdk//20.08
+sdk: org.freedesktop.Sdk//21.08
 build-extension: true
 appstream-compose: false
 build-options:
@@ -27,13 +27,18 @@ modules:
     sources:
       - type: archive
         archive-type: tar-gzip
-        url: https://api.github.com/repos/dosbox-staging/dosbox-staging/tarball/v0.77.1
-        sha256: 09dfbc94d9362647f6548ed15f87fac9256eca38450673f713a841022101d074
+        url: https://github.com/dosbox-staging/dosbox-staging/archive/v0.78.0/dosbox-staging-v0.78.0.tar.gz
+        sha256: 2e6dcfc45d7345b2d89287911718c93f30463f1d58a9bfdc3a353000520cbbf8
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dosbox-staging/dosbox-staging/releases/latest
-          version-query: .tag_name | sub("^[vV]"; "")
-          url-query: .tarball_url
+          tag-query: .tag_name
+          version-query: $tag | sub("^[vV]"; "")
+          url-query: >-
+            "https://github.com/dosbox-staging/dosbox-staging/archive/\($tag)/dosbox-staging-\($tag).tar.gz"
+      - type: patch
+        paths:
+          - patches/dosbox-staging/fix-gcc-version-detection.patch
     modules:
 
       - shared-modules/SDL/SDL-1.2.15.json
@@ -50,14 +55,21 @@ modules:
 
       - shared-modules/linux-audio/fluidsynth2.json
 
-      - name: munt
+      - name: mt32emu
         buildsystem: cmake-ninja
         config-opts:
           - -Dmunt_WITH_MT32EMU_QT:BOOL=OFF
         sources:
           - type: archive
-            url: https://github.com/munt/munt/archive/refs/tags/munt_2_5_0.tar.gz
-            sha256: 3f582ed85a70085c789f42c0ca44d93151b5e6dc4c79bae3c29b788024d3fa54
+            url: https://github.com/munt/munt/archive/libmt32emu_2_5_3.tar.gz
+            sha256: 062d110bbdd7253d01ef291f57e89efc3ee35fd087587458381f054bac49a8f5
+
+      - name: libslirp
+        buildsystem: meson
+        sources:
+          - type: archive
+            url: https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.6.1/libslirp-4.6.1.tar.gz
+            sha256: f653157e85922cbdd987dbab20f3141d182a85b654c0f3980e10bbbf01741977
 
   - name: libXinerama
     sources:
