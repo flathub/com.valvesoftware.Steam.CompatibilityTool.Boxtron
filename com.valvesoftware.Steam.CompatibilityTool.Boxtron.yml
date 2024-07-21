@@ -27,8 +27,8 @@ modules:
     sources:
       - type: archive
         archive-type: tar-gzip
-        url: https://github.com/dosbox-staging/dosbox-staging/archive/v0.80.1/dosbox-staging-v0.80.1.tar.gz
-        sha256: 2ca69e65e6c181197b63388c60487a3bcea804232a28c44c37704e70d49a0392
+        url: https://github.com/dosbox-staging/dosbox-staging/archive/v0.81.2/dosbox-staging-v0.81.2.tar.gz
+        sha256: 6676a3b6957c144a80ca8c3ffec2a0bec0320274382f23af9c57dd1c20b2eb1b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/dosbox-staging/dosbox-staging/releases/latest
